@@ -136,46 +136,49 @@ if __name__ == '__main__':
         # Sunday Search Pattern
 
         def sunday_search(text, pattern):
-            M = len(pattern)
-            N = len(text)
+            # NEW
 
-            for i in range(N - M + 1):
-                j = 0
-
-                while(j < M):
-                    if (text[i + j] != pattern[j]):
-                        break
-                    j += 1
-
-                if (j == M):
-                    print("Pattern found at index ", i)
-            # i, j, checker = 0, 0, 0
-
-            # N = len(text)
             # M = len(pattern)
+            # N = len(text)
 
-            # A = []
-
-            # for a in range(128):
-            #     A.append(M + 1)
-
-            # for j in range(M):
-            #     A[ord(pattern[j])] = M - j
-
-            # i = 0
-            # while i < N - M:
+            # for i in range(N - M + 1):
             #     j = 0
-            #     while j < M and (text[i+j] == pattern[j]):
-            #         j += 1
-            #     if j == M:
-            #         checker = 1
-            #     v = ord(text[i+M])
-            #     i += A[v]
 
-            # if checker == 1:
-            #     print("The given pattern is found")
-            # else:
-            #     print("The given pattern is not found")
+            #     while(j < M):
+            #         if (text[i + j] != pattern[j]):
+            #             break
+            #         j += 1
+
+            #     if (j == M):
+            #         print("Pattern found at index ", i)
+
+            # OLD
+
+            text = "abcdefg"
+            pattern = "cde"
+
+            i, j = 0, 0
+
+            N = len(text)
+            M = len(pattern)
+
+            A = []
+
+            for a in range(128):
+                A.append(M + 1)
+
+            for j in range(M):
+                A[ord(pattern[j])] = M - j
+
+            i = 0
+            while i < N - M:
+                j = 0
+                while j < M and (text[i+j] == pattern[j]):
+                    j += 1
+                if j == M:
+                    print(f"The given pattern is found at index: {i}")
+                    pass
+                i += A[ord(text[i+M])]
 
             return 0
         plot_graph(sunday_search)
